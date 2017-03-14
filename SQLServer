@@ -1,0 +1,9 @@
+
+/* 
+This is to get the datatypes of a select query
+Use your query as a SELECT ... INTO #TempTable FROM ...
+*/
+SELECT res.name, st.name, res.max_length, res.precision
+FROM tempdb.sys.columns as res
+left join sys.types as st on st.system_type_id = res.system_type_id
+WHERE [object_id] = OBJECT_ID(N'tempdb..#TempTable');
